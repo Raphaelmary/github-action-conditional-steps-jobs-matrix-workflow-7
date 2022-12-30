@@ -1,3 +1,5 @@
+#matrix enables you to run the same job on different configurations
+
 name: Matrix Deployment
 on: push
 jobs:
