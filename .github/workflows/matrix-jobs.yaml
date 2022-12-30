@@ -1,4 +1,4 @@
-#matrix enables you to run the same job on different configurations
+#matrix enables you to run the same job on different configurations. node-version, os are all keys you can use. the 'include' key is a reserved key. It allows us to add new standard combination and even new keys that are not specified under the matix field. 'exclude' is used to exclude some combinations
 
 name: Matrix Deployment
 on: push
@@ -9,6 +9,13 @@ jobs:
       matrix:
         node-version: [ 12, 14, 16] #node-version is user-defined
         os: [ubuntu-latest, windows-latest] # os is user defined
+        include:
+          - node-version: 18
+            os: ubuntu-latest
+            npm: 6
+        exclude: 
+          - node-version: 12
+            os: windows-latest
     runs-on: ${{ matrix.os }}
     steps:
       - name: Get Code
